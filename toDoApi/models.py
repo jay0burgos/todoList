@@ -13,10 +13,13 @@ from django.db import models
 #             pass #else a hard coded genereic class will be created 
 
 class toDo(models.Model):
-    toDo = models.TextField()
+    toDoDiscrip = models.TextField()
     completed = models.BooleanField(default= False) #defaults to false when created
-    date = models.DateField(blank=True) #doesnt need a date
+    #date = models.DateField(null=True, blank=True) #doesnt need a date
 
+
+    # class Meta: used to remove parent attributes in child 
+        
 # class groupings(models.Model):
 #     name = models.CharField(max_length=40)
 #     group = models.ForeignKey(toDo, on_delete=models.CASCADE)
