@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 
 #very simililar to forms! you can even add create delete and update functions
-class toDoSerializer(serializers.Serializer):
+class toDoSerializer(serializers.Serializer): #quickstart has an issue her
     toDoDiscrip = serializers.CharField(max_length = 80, min_length = 10)
     completed = serializers.BooleanField(default=False)
 

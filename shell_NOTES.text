@@ -1,0 +1,37 @@
+In [1]: from toDoApi.models import toDo 
+   ...: from toDoApi.serializers import toDoSerializer 
+   ...: from rest_framework.renderers import JSONRenderer 
+   ...: from rest_framework.parsers import JSONParser                                                                                                                   
+
+In [2]: aToDo = toDo(toDoDiscrip = "first todo")                                                                                                                        
+
+In [3]: serializer = toDoSerializer(aToDo)  #declaring a toDoSerializer object                                                                                                                           
+
+In [4]: serializer.data   #returns in serialized dictionary format                                                                                                                                              
+Out[4]: {'toDoDiscrip': 'first todo', 'completed': False} 
+
+In [5]: json = JSONRenderer().render(serializer.data)  #creates a json variable after passing the object                                                                                                                 
+    
+In [6]: json                                                                                                                                                            
+Out[6]: b'{"toDoDiscrip":"first todo","completed":false}' #json variable
+
+In [7]: import io       #used to deserialize and return it back to a python readable format                                                                                                                                               
+
+In [8]: stream = io.BytesIO(json)                                                                                                                                       
+
+In [9]: date = JSONParser().parse(stream)                                                                                                                               
+
+
+In [11]: serializer = toDoSerializer(data = date)                                                                                                                       
+
+In [12]: serializer.is_valid                                                                                                                                            
+Out[12]: 
+<bound method BaseSerializer.is_valid of toDoSerializer(data={'toDoDiscrip': 'first todo', 'completed': False}):
+    toDoDiscrip = CharField(max_length=80, min_length=10)
+    completed = BooleanField(default=False)>
+
+In [13]: serializer.is_valid()                                                                                                                                          
+Out[13]: True
+
+In [14]: serializer.validated_data                                                                                                                                      
+Out[14]: OrderedDict([('toDoDiscrip', 'first todo'), ('completed', False)])
