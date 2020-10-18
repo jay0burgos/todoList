@@ -7,7 +7,7 @@ from rest_framework import serializers
 class toDoSerializer(serializers.ModelSerializer): #quickstart has an issue her
     class Meta:
         model = toDo
-        fields = ['id','toDoDiscrip' , 'completed']
+        fields = ['id','date','toDoDiscrip' , 'completed']
 
 
     def create(self, validated_data):
