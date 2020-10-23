@@ -16,6 +16,7 @@ class toDo(models.Model):
     toDoDiscrip = models.TextField()
     completed = models.BooleanField(default= False) #defaults to false when created
     date = models.DateField(null=True, blank=True) 
+    
 
 
     # class Meta: used to remove parent attributes in child 

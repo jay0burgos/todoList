@@ -18,7 +18,7 @@ class toDoModelViewSet(viewsets.ModelViewSet):
     queryset = toDo.objects.all()
     serializer_class = toDoSerializer
     
-    @action(methods=['get'], detail=False)
+    @action(methods=['get'], detail=False) #broken for some reason error is Got AttributeError when attempting to get a value for field `toDoDiscrip` on serializer `toDoSerializer`
     def date_priority(self, request):
         prioritize = self.get_queryset().order_by('date')
         serializer = self.get_serializer_class()(prioritize)
