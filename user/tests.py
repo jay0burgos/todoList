@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework import status
 from django.urls import reverse
 class AccountsTest(APITestCase):
+    #credit goes to https://twitter.com/kwuchu for helpping me learn how to user tests
     def setUp(self):
         # We want to go ahead and originally create a user. 
         self.test_user = User.objects.create_user('testuser', 'test@example.com', 'testpassword')
